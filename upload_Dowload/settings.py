@@ -55,7 +55,7 @@ ROOT_URLCONF = 'upload_Dowload.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'uploadAndDowloadApp/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'uploadAndDowloadApp/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'upload_Dowload.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangoUp',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'root'
     }
 }
 
@@ -118,10 +122,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILE_DIRS = [
-    os.path.join(BASE_DIR,'uploadAndDowloadApp/static')
+    os.path.join(BASE_DIR, 'uploadAndDowloadApp/static')
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -1,10 +1,23 @@
-{% extends 'base.html' %} {% block content %}
-<h2>Upload</h2>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <input type="file" name="document" />
-  <button type="submit">Upload file</button>
-</form>
-{% if url %}
-<p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
-{% endif %} {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload</title>
+  </head>
+    <body>
+        {% if media %}
+            All documents in the database:
+            <ul>
+                {% for document in media %}
+                    <li><p>{{document.pk}} : <a href="{{document.docfile }}">{{ document.docfile }}</a> </p></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No files in database</p>
+        {% endif %}
+            <form action="{% url "index" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p> {{ form.docfile.errors }}{{ form.docfile }}<input type="submit" value="Upload"/></p>
+        </form>
+    </body>
+</html>

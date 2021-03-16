@@ -2,3 +2,5 @@ Django
 django-crispy-forms
 Pillow
 pytz
+mysqlclient
+django-mysql
